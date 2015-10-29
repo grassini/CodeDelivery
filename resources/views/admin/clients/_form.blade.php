@@ -1,4 +1,4 @@
-{!! Form::hidden('user_id',isset($client->user_id) ? $client->user_id : null) !!}
+
 
 
 <div class="form-group">
@@ -9,11 +9,6 @@
 <div class="form-group">
     {!! Form::label('Email','Email: ') !!}
     {!! Form::text('user[email]', null, ['class'=>'form-control' ]) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::label('password','Senha:') !!}
-    {!! Form::text('password',null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">

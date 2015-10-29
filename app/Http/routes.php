@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('admin', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'admin.categories.index', 'uses' => 'CategoriesController@index']);
 
 
-Route::group(['prefix' => 'admin', 'middleware'=>'auth.checkrole'], function(){
+//Route::group(['prefix' => 'admin', 'middleware'=>'auth.checkrole'], function(){
+Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
 
 
     Route::get('/', ['as' => 'admin.categories.index', 'uses' => 'CategoriesController@index']);

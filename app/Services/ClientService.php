@@ -41,6 +41,9 @@ class ClientService
         #atribuindo uma senha padrão
         $data['user']['password'] = bcrypt(123456);
 
+        #atribuindo um Remenber Token
+        $data['user']['remember_token'] = str_random(10);
+
         #criando o usuario
         $user = $this->userRepository->create($data['user']);
 

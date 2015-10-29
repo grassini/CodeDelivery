@@ -23,22 +23,34 @@ class AdminClientRequest extends Request
      */
     public function rules()
     {
-        $rules = [
-//            'name'    => 'required',
-//            'email'   => 'required|email|unique:users,email',
-//            'password'=> 'required',
-//            'phone'   => 'required',
-//            'address' => 'required',
-//            'city'    => 'required',
-//            'state'   => 'required',
-//            'zipcode' => 'required',
+        return  [
+            //'name'    => 'required',
+            //'email'   => 'required|email|unique:users,email',
+            'phone'   => 'required',
+            'address' => 'required',
+            'city'    => 'required',
+            'state'   => 'required',
+            'zipcode' => 'required',
         ];
 
-        if($this->segment(3) == 'admin' || $this->segment(3) == 'update'){
-            unset($rules['email']);
-            $rules['password'] = '';
-        }
-
-        return $rules;
     }
+
+
+
+    /**
+     * Custumizando as Mensagem de Error
+     */
+    public function messages()
+    {
+        return [
+            //'name.required' => 'O Nome é Obrigatório.',
+            //'email.required' => 'O email é obrigatório.',
+            'email.unique' => 'Esse e-mail já consta em nosso banco de dados!',
+            'phone.required' => 'O telefone é obrigatório.',
+            'address.required' => 'O Endereço é obrigatório.',
+            'city.required' => 'A Cidade é obrigatória.',
+            'zipcode.required' => 'A Cidade é obrigatória.',
+        ];
+    }
+
 }
