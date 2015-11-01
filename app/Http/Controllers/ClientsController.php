@@ -58,6 +58,8 @@ class ClientsController extends Controller
 
         $client = $this->repository->find($id);
 
+        //dd($client);
+
         return view('admin.clients.edit',compact('client'));
     }
 
