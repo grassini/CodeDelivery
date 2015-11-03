@@ -42,5 +42,13 @@ class UserTableSeeder extends Seeder
 
         });
 
+
+        #Criando Delivery Man
+        factory(User::class, 3)->create(
+            [
+                'role'      => 'deliveryman',
+            ]
+        );
+
     }
 }

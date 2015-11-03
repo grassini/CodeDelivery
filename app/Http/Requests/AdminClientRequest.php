@@ -24,8 +24,8 @@ class AdminClientRequest extends Request
     public function rules()
     {
         return  [
-            'name'    => 'required',
-            'email'   => 'required|email|unique:users,email',
+            'user.name'    => 'required',
+            'user.email'   => 'required|email|unique:users,email',
             'phone'   => 'required',
             'address' => 'required',
             'city'    => 'required',
@@ -43,9 +43,10 @@ class AdminClientRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => 'O Nome é Obrigatório.',
-            'email.required' => 'O email é obrigatório.',
-            'email.unique' => 'Esse e-mail já consta em nosso banco de dados!',
+            'user.name.required' => 'O Nome é Obrigatório.',
+            'user.email.required' => 'O email é obrigatório.',
+            'user.email.email' => 'O email digitado não é valido!',
+            'user.email.unique' => 'Esse email já consta em nosso banco de dados!',
             'phone.required' => 'O telefone é obrigatório.',
             'address.required' => 'O Endereço é obrigatório.',
             'city.required' => 'A Cidade é obrigatória.',
