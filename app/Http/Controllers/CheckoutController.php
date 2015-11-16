@@ -7,6 +7,8 @@ use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Services\OrderService;
+
+
 class CheckoutController extends Controller
 {
     private $repository;
@@ -36,6 +38,7 @@ class CheckoutController extends Controller
 
         return view('customer.order.index',compact('orders'));
     }
+
 
     public function create()
     {

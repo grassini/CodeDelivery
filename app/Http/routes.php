@@ -19,11 +19,12 @@ Route::get('/home', function(){
     return view('welcome');
 });
 
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
+
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth.checkrole:admin'], function(){
-//Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
-
-
     Route::get('/', ['as' => 'admin.categories.index', 'uses' => 'CategoriesController@index']);
 
     Route::get('categories', ['as' => 'admin.categories.index', 'uses' => 'CategoriesController@index']);
@@ -60,13 +61,24 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth.checkrole:admin'], functi
     Route::get('cupoms/edit/{id}', ['as' => 'admin.cupoms.edit', 'uses' => 'CupomsController@edit']);
     Route::post('cupoms/update/{id}', ['as' => 'admin.cupoms.update', 'uses' => 'CupomsController@update']);
     Route::get('cupoms/destroy/{id}', ['as'=>'admin.cupoms.destroy', 'uses' => 'CupomsController@destroy']);
-
 });
 
-    Route::group(['prefix'=>'customer', 'middleware'=>'auth.checkrole:client', 'as'=>'customer.'], function(){
 
-        route::get('order', ['as'=>'order.index', 'uses'=>'CheckoutController@index']);
-        route::get('order/create', ['as'=>'order.create', 'uses'=>'CheckoutController@create']);
-        route::post('order/store', ['as'=>'order.store', 'uses'=>'CheckoutController@store']);
+#Route::group(['prefix'=>'customer', 'middleware'=>'auth.checkrole:client', 'as'=>'customer.'], function(){
+Route::group(['prefix'=>'customer',  'as'=>'customer.'], function(){
+
+    route::get('order', ['as'=>'order.index', 'uses'=>'CheckoutController@index']);
+    route::get('order/create', ['as'=>'order.create', 'uses'=>'CheckoutController@create']);
+    route::post('order/store', ['as'=>'order.store', 'uses'=>'CheckoutController@store']);
+});
+
+
+Route::group(['prefix' => 'api', 'middleware'=>'oauth', 'as'=>'api.'], function() {
+    Route::get('pedidos', function(){
+       return [
+        'id' => '1',
+        'client' => 'Jefferson',
+        'total' => 10
+       ];
     });
-
+});

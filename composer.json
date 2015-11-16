@@ -10,7 +10,8 @@
         "laravel/framework": "5.1.*",
         "bestmomo/scafold": "dev-master",
         "prettus/l5-repository": "dev-master",
-        "illuminate/html": "^5.0@dev"
+        "illuminate/html": "^5.0@dev",
+      "lucadegasperi/oauth2-server-laravel": "5.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
