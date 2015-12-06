@@ -76,9 +76,24 @@ Route::group(['prefix'=>'customer',  'as'=>'customer.'], function(){
 Route::group(['prefix' => 'api', 'middleware'=>'oauth', 'as'=>'api.'], function() {
     Route::get('pedidos', function(){
        return [
-        'id' => '1',
+        'id' => 1,
         'client' => 'Jefferson',
         'total' => 10
        ];
     });
+
+    route::get('teste', function (){
+        return ['API Rodando!'];
+    });
+
+
 });
+
+//
+//Route::group(['prefix'=>'api','middleware'=>'oauth', 'as'=>'api.'],function (){
+//
+//    get('teste', function (){
+//        return ['API Rodando!'];
+//    });
+//
+//});

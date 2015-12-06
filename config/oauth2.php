@@ -26,7 +26,7 @@ return [
     | http://git.io/vJLAv
     |
     */
-
+    # Tipo de Autorização para o Sistema
     'grant_types' => [
         'password' => [
             'class' => '\League\OAuth2\Server\Grant\PasswordGrant',

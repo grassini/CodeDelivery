@@ -135,11 +135,15 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
+        /*
+        * Adicionando Form
+        */
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
 
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Bestmomo\Scafold\ScafoldServiceProvider::class,
+
         /*
         * Adicionando Auth2
         */
@@ -206,8 +210,14 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        /*
+        * Adicionando Form
+        */
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
+        /*
+        * Adicionando Auth2
+        */
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
 
     ],
