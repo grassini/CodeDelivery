@@ -15,15 +15,13 @@ class OAuthClientSeeder extends Seeder
     {
         $data = date('Y-m-d G:h:i:s');
         \DB::insert(
-            "insert into oauth_clients
-                (id, secret, name, created_at, updated_at)
-                values(?,?,?,?,?)",
+            "insert into oauth_clients (id, secret, name, created_at, updated_at) values(?,?,?,?,?)",
                 [
                     'appid01',
                     'secret',
                     'Minha App Mobile',
-                    "now()",
-                    "now()"
+                    "$data",
+                    "$data"
                 ]);
 
 
