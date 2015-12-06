@@ -74,6 +74,53 @@ Route::group(['prefix'=>'customer',  'as'=>'customer.'], function(){
 
 
 Route::group(['prefix' => 'api', 'middleware'=>'oauth', 'as'=>'api.'], function() {
+
+    Route::group(['prefix' => 'client', 'middleware'=>'oauth.checkrole:client', 'as'=>'client.'], function() {
+
+        Route::get('order', function(){
+           return ['pegando dados'];
+        });
+
+        Route::post('order', function(){
+            return ['criando dados'];
+        });
+
+        Route::put('order', function(){
+            return ['Atualizando dados interiros'];
+        });
+
+        Route::patch('order', function(){
+            return ['Atualizando dados parcialmente'];
+        });
+
+        Route::delete('order', function(){
+            return ['Excluindo dados'];
+        });
+
+
+        Route::get('pedidos', function(){
+            return [
+                'id' => 1,
+                'client' => 'Jefferson - Client',
+                'total' => 10
+            ];
+        });
+
+    });
+
+
+    Route::group(['prefix' => 'deliveryman', 'middleware'=>'oauth.checkrole:deliveryman', 'as'=>'deliveryman.'], function() {
+
+        Route::get('pedidos', function(){
+            return [
+                'id' => 1,
+                'client' => 'Jefferson - Entregador',
+                'total' => 10
+            ];
+        });
+    });
+
+
     Route::get('pedidos', function(){
        return [
         'id' => 1,
