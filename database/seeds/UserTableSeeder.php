@@ -36,6 +36,11 @@ class UserTableSeeder extends Seeder
         )->client()->save(factory(Client::class)->make());
 
 
+
+
+
+
+
         #A cada user, criando tb dados para clientes
         factory(User::class, 10)->create()->each(function ($u) {
             $u->client()->save(factory(Client::class)->make());

@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
         #implementando um Middleware para Checar o Usuario
         'auth.checkrole' => \CodeDelivery\Http\Middleware\CheckRole::class,
 
-
+        #implementadno um Middleware para o OAuth2, verificar se o usuario é: Client ou Deliveryman
         'oauth.checkrole' => \CodeDelivery\Http\Middleware\OAuthCheckRole::class,
 
         #Auth2

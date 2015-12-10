@@ -28,12 +28,6 @@ class CheckRole
         }
 
 
-//        if(Auth::user()->role != $role){
-//            return redirect('/auth/login');
-//        }
-
-
-
         return $next($request);
     }
 }

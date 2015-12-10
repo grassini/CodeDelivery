@@ -17,6 +17,12 @@ class Order extends Model implements Transformable
         'status',
     ];
 
+    #Criando relacionamento com Cupom
+    public function cupom()
+    {
+        return $this->belongsTo(Cupom::class);
+    }
+
     #Criando relacionamento com a tabela User->client
     public function client()
     {

@@ -15,13 +15,9 @@ Route::get('/', function(){
    return view('welcome');
 });
 
-Route::get('/home', function(){
-    return view('welcome');
-});
-
-Route::post('oauth/access_token', function() {
-    return Response::json(Authorizer::issueAccessToken());
-});
+//Route::get('/home', function(){
+//    return view('welcome');
+//});
 
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth.checkrole:admin'], function(){
@@ -73,38 +69,21 @@ Route::group(['prefix'=>'customer',  'as'=>'customer.'], function(){
 });
 
 
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
+
+
 Route::group(['prefix' => 'api', 'middleware'=>'oauth', 'as'=>'api.'], function() {
 
     Route::group(['prefix' => 'client', 'middleware'=>'oauth.checkrole:client', 'as'=>'client.'], function() {
 
-        Route::get('order', function(){
-           return ['pegando dados'];
-        });
+        Route::get('user/authenticated', 'UserController@authenticated');
 
-        Route::post('order', function(){
-            return ['criando dados'];
-        });
-
-        Route::put('order', function(){
-            return ['Atualizando dados interiros'];
-        });
-
-        Route::patch('order', function(){
-            return ['Atualizando dados parcialmente'];
-        });
-
-        Route::delete('order', function(){
-            return ['Excluindo dados'];
-        });
-
-
-        Route::get('pedidos', function(){
-            return [
-                'id' => 1,
-                'client' => 'Jefferson - Client',
-                'total' => 10
-            ];
-        });
+        Route::resource('order',
+            'Api\Client\ClientCheckoutController', [
+                'except' => ['create', 'edit', 'destroy']
+        ]);
 
     });
 
@@ -136,11 +115,3 @@ Route::group(['prefix' => 'api', 'middleware'=>'oauth', 'as'=>'api.'], function(
 
 });
 
-//
-//Route::group(['prefix'=>'api','middleware'=>'oauth', 'as'=>'api.'],function (){
-//
-//    get('teste', function (){
-//        return ['API Rodando!'];
-//    });
-//
-//});

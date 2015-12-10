@@ -4,7 +4,6 @@ namespace CodeDelivery\Http\Middleware;
 
 use Closure;
 use CodeDelivery\Repositories\UserRepository;
-use Illuminate\Support\Facades\Auth;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class OAuthCheckRole
@@ -28,7 +27,7 @@ class OAuthCheckRole
         #Proprietario do Acesso, pega o id do User Autenticado
         $id = Authorizer::getResourceOwnerId();
 
-        #Consulta o Usuario
+        #Consulta o Usuario Autenticado é um Client ou Admin
         $user = $this->userRepository->find($id);
 
         #Verifica se a Role é = a passada
